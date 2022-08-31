@@ -1,0 +1,130 @@
+/*медиа запрос, для экранов с шириной до 770*/
+
+@media(max-width: 770px) {
+    .header {
+        width: 770px;
+    }
+
+    .subtitle {
+        width: 70px;
+    }
+
+    .subtitle h4 {
+        padding-left: 0;
+    }
+    .subtitle h2 {
+        padding-left: 220px;
+    }
+
+    .catalog__sort {
+        left: 0px;
+    }
+
+    .vl {
+        height: 200px;
+    }
+    .position{
+        width: 140px;
+    }
+    .position img {
+        width: 140px;
+        display: block;
+    }
+    .catalog {
+        top: 15px;
+        left: 25px;
+    }
+    .position p{
+        padding-left: 5px;
+        text-align:center;
+        font-size: 15px;
+    }
+}
+
+/*медиа запрос, для экранов с шириной до 600*/
+
+@media(max-width: 600px) {
+    .header {
+        width: 600px;
+    }
+
+    .subtitle {
+        width: 70px;
+    }
+
+    .subtitle h4 {
+        padding-left: 0;
+    }
+    .subtitle h2 {
+        padding-left: 170px;
+    }
+
+    .catalog__sort {
+        left: 0px;
+    }
+
+    .vl {
+        height: 200px;
+    }
+    .position{
+        width: 110px;
+    }
+    .position img {
+        width: 110px;
+        display: block;
+    }
+    .catalog {
+        top: 15px;
+        left: 25px;
+    }
+    .position p{
+        padding-left: 5px;
+        text-align:center;
+        font-size: 15px;
+    }
+}
+
+
+
+/*медиа запрос, для экранов с шириной до 450*/
+
+@media(max-width: 450px) {
+    .header {
+        width: 425px;
+    }
+
+    .subtitle {
+        width: 70px;
+    }
+
+    .subtitle h4 {
+        padding-left: 0;
+    }
+    .subtitle h2 {
+        padding-left: 70px;
+    }
+
+    .catalog__sort {
+        left: 0px;
+    }
+
+    .vl {
+        height: 200px;
+    }
+    .position{
+        width: 90px;
+    }
+    .position img {
+        width: 90px;
+        display: block;
+    }
+    .catalog {
+        top: 15px;
+        left: 25px;
+    }
+    .position p{
+        padding-left: 5px;
+        text-align:center;
+        font-size: 15px;
+    }
+}

@@ -1,3 +1,5 @@
+const productType = ["Shirt", "Hoodie", "Tshirt", "Polo", "Shorts"]
+
 const shirtNew = [
     { name: "Product 1", price: "price:$87", tupe: "shirt", img: "./img/1.png", },
     { name: "Product 2", price: "price:$93", tupe: "shirt", img: "./img/1.png", },

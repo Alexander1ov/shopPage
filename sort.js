@@ -2,70 +2,27 @@
 let catalog__subtitle = document.querySelector('.catalog__subtitle');
 let catalog__sort = document.querySelector('.catalog__sort');
 
-let shirt = document.createElement('button');
-shirt.className = "catalog__brand";
-shirt.innerHTML = "Shirt";
-catalog__sort.append(shirt);
+for (let elem of productType) {
+    let text = elem;
+    elem = document.createElement('button');
+    elem.className = "catalog__brand";
+    elem.classList.add(text);
+    elem.innerHTML = text;
+    catalog__sort.append(elem);
 
-let hoodie = document.createElement('button');
-hoodie.className = "catalog__brand";
-hoodie.innerHTML = "Hoodie";
-catalog__sort.append(hoodie);
 
-let tshirt = document.createElement('button');
-tshirt.className = "catalog__brand";
-tshirt.innerHTML = "T-shirt";
-catalog__sort.append(tshirt);
-
-let polo = document.createElement('button');
-polo.className = "catalog__brand";
-polo.innerHTML = "Polo";
-catalog__sort.append(polo);
-
-let shorts = document.createElement('button');
-shorts.className = "catalog__brand";
-shorts.innerHTML = "Shorts";
-catalog__sort.append(shorts);
-
+};
 
 //Catalog
 let catalog__clothes = document.querySelector('.catalog__clothes');
 
 function appendAdd(arr) {
     catalog__clothes.innerHTML = "";
-    for (let elem of arr) {
+    arr.forEach(function (elem) {
         catalog__clothes.innerHTML += `<div class="position ${elem.tupe}"><img src=${elem.img}><p>${elem.name}<br> ${elem.tupe} <br>${elem.price}</p></div> `
-        //let newProduct = document.createElement('div');
-        //newProduct.classList.add("position");
-        //newProduct.classList.add(elem.tupe);
-        //catalog__clothes.append(newProduct);
-        //let productImg = document.createElement('img')
-        //productImg.src = elem.img
-        //newProduct.append(productImg)
-        //let content = document.createElement('p');
-        //content.innerHTML = elem.name + "\n" + elem.tupe + "\n " + elem.price;
-        //newProduct.append(content)
-    };
+    });
 }
 
-shirt.addEventListener("click", function () {
-    appendAdd(shirtNew)
-});
-
-hoodie.addEventListener('click', function () {
-    appendAdd(hoodieNew)
-});
-
-tshirt.addEventListener('click', function () {
-    appendAdd(tshirtNew)
-});
-
-polo.addEventListener('click', function () {
-    appendAdd(poloNew)
-});
-shorts.addEventListener('click', function () {
-    appendAdd(shortNew)
-});
 catalog__subtitle.addEventListener('click', function (event) {
     let target = event.target;
     if (target.tagName == "H4") {
@@ -74,11 +31,29 @@ catalog__subtitle.addEventListener('click', function (event) {
 })
 appendAdd(allItems);
 
+catalog__sort.addEventListener("click", function (event) {
+    let target = event.target;
+    if (target.className == "catalog__sort") return;
+    console.log(target.classList[1]);
+    if (target.classList[1] == "Shirt") {
+        appendAdd(shirtNew);
+    } else if (target.classList[1] == "Hoodie") {
+        appendAdd(hoodieNew);
+    } else if (target.classList[1] == "Tshirt") {
+        appendAdd(tshirtNew);
+    } else if (target.classList[1] == "Polo") {
+        appendAdd(poloNew);
+    } else if (target.classList[1] == "Shorts") {
+        appendAdd(shortNew);
+    }
+})
+
 //Корзина
 let header__img = document.querySelector('.header__img')
 let amount = document.createElement('div');
 amount.className = "amount";
 header__img.append(amount);
+
 
 header__img.addEventListener("click", function () {
     location.href = 'https://www.ozon.ru/cart';
@@ -86,7 +61,14 @@ header__img.addEventListener("click", function () {
 
 catalog__clothes.addEventListener('click', function (event) {
     let element = event.target.closest('div');
-    if (!element) return;
+    if (!element || element.className == "catalog__clothes" || element.className == "checkMark") return;
+    if (element.lastChild.className != "checkMark") {
+        let checkMark = document.createElement('div');
+        checkMark.className = "checkMark"
+        checkMark.innerHTML += '<img  src="./img/checkMark.png">'
+        element.append(checkMark);
+    }
+
     amount.innerHTML = Number(amount.innerHTML) + Number(1);
     amount.style.display = "block";
 });

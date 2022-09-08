@@ -39,6 +39,16 @@
         text-align:center;
         font-size: 15px;
     }
+
+    .checkMark{
+        width: 30px;
+        top: 40px;
+        right: 30px;
+
+    }
+    .checkMark img{
+        width: 30px;
+    }
 }
 
 /*медиа запрос, для экранов с шириной до 600*/
@@ -82,7 +92,18 @@
         text-align:center;
         font-size: 15px;
     }
+
+    .checkMark{
+        width: 30px;
+        top: 20px;
+        right: 5px;
+
+    }
+    .checkMark img{
+        width: 20px;
+    }
 }
+
 
 
 
@@ -126,5 +147,14 @@
         padding-left: 5px;
         text-align:center;
         font-size: 15px;
+    }
+    .checkMark{
+        width: 30px;
+        top: 20px;
+        right: 5px;
+
+    }
+    .checkMark img{
+        width: 20px;
     }
 }

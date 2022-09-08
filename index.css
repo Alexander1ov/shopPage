@@ -43,10 +43,10 @@ hr {
     height: 2px;
     border-radius: 4px;
 }
-.subtitle{
+.catalog__subtitle{
     display: block;
 }
-.subtitle h4{
+.catalog__subtitle h4{
     margin: 0px;
     padding-top: 5px;
     padding-left: 20px;
@@ -54,7 +54,7 @@ hr {
     cursor: pointer;
 
 }
-.subtitle h2{
+.catalog__subtitle h2{
     margin: 0;
     padding-left: 200px;
     position: absolute;
@@ -94,7 +94,7 @@ hr {
     text-decoration: underline;
 }
 
-.vl {
+.catalog__vertical {
     border-right: 2px solid black;
     height: 500px;
 }

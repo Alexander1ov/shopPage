@@ -1,74 +1,56 @@
 //All Brands
-let catalog__subtitle = document.querySelector('.catalog__subtitle');
-let catalog__sort = document.querySelector('.catalog__sort');
+let catalogSubtitle = document.querySelector('.catalog__subtitle');
+let catalogSort = document.querySelector('.catalog__sort');
 
-for (let elem of productType) {
-    let text = elem;
-    elem = document.createElement('button');
-    elem.className = "catalog__brand";
-    elem.classList.add(text);
-    elem.innerHTML = text;
-    catalog__sort.append(elem);
+productType.forEach(function (elem) {
+    catalogSort.innerHTML += `<button class="catalog__brand ${elem}" data-type=${elem}>${elem}</button> `
+})
 
+catalogSubtitle.addEventListener('click', function (event) {
+    let target = event.target;
+    if (target.dataset.header == "title") {
+        addProducts(allItems)
+    }
+})
 
-};
+let catalogBrand = document.querySelector('.catalog__brand');
+
+catalogSort.addEventListener("click", function (event) {
+    let element = event.target.closest('.catalog__brand');
+    if (!element) return;
+    catalogClothes.innerHTML = "";
+    for (let object of allItems) {
+        if (object.type == element.dataset.type) {
+            catalogClothes.innerHTML += `<div class="position ${object.type}"><img src=${object.img}><p>${object.name}<br> ${object.type} <br>${object.price}</p></div> `
+        };
+    }
+})
 
 //Catalog
-let catalog__clothes = document.querySelector('.catalog__clothes');
+let catalogClothes = document.querySelector('.catalog__clothes');
 
-function appendAdd(arr) {
-    catalog__clothes.innerHTML = "";
+function addProducts(arr) {
+    catalogClothes.innerHTML = "";
     arr.forEach(function (elem) {
-        catalog__clothes.innerHTML += `<div class="position ${elem.tupe}"><img src=${elem.img}><p>${elem.name}<br> ${elem.tupe} <br>${elem.price}</p></div> `
+        catalogClothes.innerHTML += `<div class="position ${elem.type}"><img src=${elem.img}><p>${elem.name}<br> ${elem.type} <br>${elem.price}</p></div> `
     });
 }
+addProducts(allItems);
 
-catalog__subtitle.addEventListener('click', function (event) {
-    let target = event.target;
-    if (target.tagName == "H4") {
-        appendAdd(allItems)
-    }
-})
-appendAdd(allItems);
-
-catalog__sort.addEventListener("click", function (event) {
-    let target = event.target;
-    if (target.className == "catalog__sort") return;
-    console.log(target.classList[1]);
-    if (target.classList[1] == "Shirt") {
-        appendAdd(shirtNew);
-    } else if (target.classList[1] == "Hoodie") {
-        appendAdd(hoodieNew);
-    } else if (target.classList[1] == "Tshirt") {
-        appendAdd(tshirtNew);
-    } else if (target.classList[1] == "Polo") {
-        appendAdd(poloNew);
-    } else if (target.classList[1] == "Shorts") {
-        appendAdd(shortNew);
-    }
-})
-
-//Корзина
-let header__img = document.querySelector('.header__img')
+//basket
+let headerImg = document.querySelector('.header__img')
 let amount = document.createElement('div');
 amount.className = "amount";
-header__img.append(amount);
+headerImg.append(amount);
 
-
-header__img.addEventListener("click", function () {
+headerImg.addEventListener("click", function () {
     location.href = 'https://www.ozon.ru/cart';
 })
 
-catalog__clothes.addEventListener('click', function (event) {
-    let element = event.target.closest('div');
-    if (!element || element.className == "catalog__clothes" || element.className == "checkMark") return;
-    if (element.lastChild.className != "checkMark") {
-        let checkMark = document.createElement('div');
-        checkMark.className = "checkMark"
-        checkMark.innerHTML += '<img  src="./img/checkMark.png">'
-        element.append(checkMark);
-    }
-
+//mark
+catalogClothes.addEventListener('click', function (event) {
+    let element = event.target.closest('.position');
+    element.innerHTML += `<div class="checkMark"><img  src="./img/checkMark.png"</div> `
     amount.innerHTML = Number(amount.innerHTML) + Number(1);
     amount.style.display = "block";
 });

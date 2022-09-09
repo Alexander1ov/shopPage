@@ -19,11 +19,11 @@ catalogSort.addEventListener("click", function (event) {
     let element = event.target.closest('.catalog__brand');
     if (!element) return;
     catalogClothes.innerHTML = "";
-    for (let object of allItems) {
-        if (object.type == element.dataset.type) {
-            catalogClothes.innerHTML += `<div class="position ${object.type}"><img src=${object.img}><p>${object.name}<br> ${object.type} <br>${object.price}</p></div> `
-        };
-    }
+    allItems.forEach(function(object){
+            if (object.type == element.dataset.type) {
+                catalogClothes.innerHTML += `<div class="position ${object.type}"><img src=${object.img}><p>${object.name}<br> ${object.type} <br>${object.price}</p></div> `
+            };
+    })
 })
 
 //Catalog

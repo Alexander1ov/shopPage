@@ -19,10 +19,10 @@ catalogSort.addEventListener("click", function (event) {
     let element = event.target.closest('.catalog__brand');
     if (!element) return;
     catalogClothes.innerHTML = "";
-    allItems.forEach(function(object){
-            if (object.type == element.dataset.type) {
-                catalogClothes.innerHTML += `<div class="position ${object.type}"><img src=${object.img}><p>${object.name}<br> ${object.type} <br>${object.price}</p></div> `
-            };
+    allItems.forEach(function (object) {
+        if (object.type == element.dataset.type) {
+            catalogClothes.innerHTML += `<div class="position ${object.type}"><img src=${object.img}><p>${object.name}<br> ${object.type} <br>${object.price}</p></div> `
+        };
     })
 })
 
@@ -48,9 +48,11 @@ headerImg.addEventListener("click", function () {
 })
 
 //mark
+let quantityGoods = 0;
 catalogClothes.addEventListener('click', function (event) {
     let element = event.target.closest('.position');
-    element.innerHTML += `<div class="checkMark"><img  src="./img/checkMark.png"</div> `
-    amount.innerHTML = Number(amount.innerHTML) + Number(1);
+    element.innerHTML += `<div class="checkMark"><img  src="./img/checkMark.png"</div> `;
+    quantityGoods = quantityGoods + 1;
+    amount.innerHTML = quantityGoods;
     amount.style.display = "block";
 });
